@@ -1,3 +1,6 @@
 [submodule "Rengine/vendor/spdlog"]
 	path = Rengine/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "Rengine/vendor/GLFW"]
+	path = Rengine/vendor/GLFW
+	url = https://github.com/RenzoRomeo/glfw

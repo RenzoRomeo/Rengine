@@ -10,6 +10,13 @@ workspace "Rengine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Dependencies
+IncludeDir = {}
+IncludeDir["GLFW"] = "Rengine/vendor/GLFW/include"
+
+-- This line includes the premake file inside GLFW.
+include "Rengine/vendor/GLFW"
+
 project "Rengine"
 	location "Rengine"
 	kind "SharedLib"
@@ -30,7 +37,14 @@ project "Rengine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
