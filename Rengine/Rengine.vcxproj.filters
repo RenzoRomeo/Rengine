@@ -19,14 +19,22 @@
     <ClInclude Include="src\Rengine\EntryPoint.h">
       <Filter>Rengine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rengine\Events\ApplicationEvent.h">
+      <Filter>Rengine\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rengine\Events\Event.h">
+      <Filter>Rengine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rengine\Events\KeyEvent.h">
+      <Filter>Rengine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rengine\Events\MouseEvent.h">
       <Filter>Rengine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Rengine\Log.h">
       <Filter>Rengine</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rengine\Events\KeyEvent.h" />
-    <ClInclude Include="src\Rengine\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rengine\Application.cpp">
@@ -35,6 +43,6 @@
     <ClCompile Include="src\Rengine\Log.cpp">
       <Filter>Rengine</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rengine\Events\MouseEvent.cpp" />
+    <ClCompile Include="src\repch.cpp" />
   </ItemGroup>
 </Project>

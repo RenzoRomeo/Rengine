@@ -1,9 +1,7 @@
 #pragma once
 
+#include "repch.h"
 #include "Rengine/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Rengine
 {

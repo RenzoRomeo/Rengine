@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Rengine
 {
 	class RENGINE_API MouseMovedEvent : public Event

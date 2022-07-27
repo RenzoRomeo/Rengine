@@ -18,6 +18,9 @@ project "Rengine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "repch.h"
+	pchsource "Rengine/src/repch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

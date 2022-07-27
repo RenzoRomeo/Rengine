@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Rengine/Application.h"
+#include "Rengine/Log.h"
+
 #ifdef RE_PLATFORM_WINDOWS
 
 extern Rengine::Application* Rengine::CreateApplication();
