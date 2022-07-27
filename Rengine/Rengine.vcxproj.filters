@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Rengine">
       <UniqueIdentifier>{6DEA809F-D9C9-FF3A-E2E1-8A114E40669C}</UniqueIdentifier>
     </Filter>
@@ -9,6 +12,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\WindowsWindow.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rengine.h" />
     <ClInclude Include="src\Rengine\Application.h">
       <Filter>Rengine</Filter>
@@ -34,9 +40,15 @@
     <ClInclude Include="src\Rengine\Log.h">
       <Filter>Rengine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rengine\Window.h">
+      <Filter>Rengine</Filter>
+    </ClInclude>
     <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\WindowsWindow.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rengine\Application.cpp">
       <Filter>Rengine</Filter>
     </ClCompile>
