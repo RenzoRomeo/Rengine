@@ -26,6 +26,7 @@ project "Rengine"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 
@@ -74,7 +75,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Rengine/vendor/spdlog/include",
-		"Rengine/src"
+		"Rengine/src",
+		"Rengine/vendor"
 	}
 
 	links

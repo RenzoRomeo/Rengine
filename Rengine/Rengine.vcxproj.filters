@@ -4,6 +4,9 @@
     <Filter Include="Rengine">
       <UniqueIdentifier>{6DEA809F-D9C9-FF3A-E2E1-8A114E40669C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Rengine\Events">
+      <UniqueIdentifier>{B1F992BF-9DC7-86C5-865B-F7EB72C8622A}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Rengine.h" />
@@ -16,9 +19,14 @@
     <ClInclude Include="src\Rengine\EntryPoint.h">
       <Filter>Rengine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rengine\Events\Event.h">
+      <Filter>Rengine\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rengine\Log.h">
       <Filter>Rengine</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rengine\Events\KeyEvent.h" />
+    <ClInclude Include="src\Rengine\Events\ApplicationEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Rengine\Application.cpp">
@@ -27,5 +35,6 @@
     <ClCompile Include="src\Rengine\Log.cpp">
       <Filter>Rengine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rengine\Events\MouseEvent.cpp" />
   </ItemGroup>
 </Project>
