@@ -4,3 +4,6 @@
 [submodule "Rengine/vendor/GLFW"]
 	path = Rengine/vendor/GLFW
 	url = https://github.com/RenzoRomeo/glfw
+[submodule "Rengine/vendor/imgui"]
+	path = Rengine/vendor/imgui
+	url = https://github.com/RenzoRomeo/imgui

@@ -13,10 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Dependencies
 IncludeDir = {}
 IncludeDir["GLFW"] = "Rengine/vendor/GLFW/include"
-IncludeDir["Glad"] = "Rengine/vendor/GLAD/include"
+IncludeDir["Glad"] = "Rengine/vendor/Glad/include"
+IncludeDir["ImGui"] = "Rengine/vendor/imgui"
 
 include "Rengine/vendor/GLFW"
-include "Rengine/vendor/GLAD"
+include "Rengine/vendor/Glad"
+include "Rengine/vendor/imgui"
 
 project "Rengine"
 	location "Rengine"
@@ -40,13 +42,15 @@ project "Rengine"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

@@ -4,14 +4,23 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Rengine">
       <UniqueIdentifier>{6DEA809F-D9C9-FF3A-E2E1-8A114E40669C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Rengine\Events">
       <UniqueIdentifier>{B1F992BF-9DC7-86C5-865B-F7EB72C8622A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Rengine\ImGui">
+      <UniqueIdentifier>{57BD9C34-C37D-186B-8CB8-61E8F8375D47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -37,6 +46,9 @@
     <ClInclude Include="src\Rengine\Events\MouseEvent.h">
       <Filter>Rengine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rengine\ImGui\ImGuiLayer.h">
+      <Filter>Rengine\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rengine\Layer.h">
       <Filter>Rengine</Filter>
     </ClInclude>
@@ -52,11 +64,17 @@
     <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\Rengine\Application.cpp">
       <Filter>Rengine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rengine\ImGui\ImGuiLayer.cpp">
+      <Filter>Rengine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Rengine\Layer.cpp">
       <Filter>Rengine</Filter>
