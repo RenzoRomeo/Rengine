@@ -26,6 +26,7 @@ project "Rengine"
 	location "Rengine"
 	kind "SharedLib"
 	language "C++"
+        staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -58,7 +59,6 @@ project "Rengine"
 
 	filter "system:windows"
 		cppdialect "C++20"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -75,23 +75,24 @@ project "Rengine"
 
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
-                buildoptions "/MDd"
+                runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "RE_RELEASE"
-                buildoptions "/MD"
+                runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "RE_DIST"
-                buildoptions "/MD"
+                runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -116,7 +117,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++20"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -126,15 +126,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
-                buildoptions "/MDd"
+                runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "RE_RELEASE"
-                buildoptions "/MD"
+                runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "RE_DIST"
-                buildoptions "/MD"
+                runtime "Release"
 		optimize "On"
