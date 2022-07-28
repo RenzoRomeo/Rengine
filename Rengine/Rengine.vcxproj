@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -135,6 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
@@ -158,6 +161,8 @@
     <ClInclude Include="src\Rengine\Events\Event.h" />
     <ClInclude Include="src\Rengine\Events\KeyEvent.h" />
     <ClInclude Include="src\Rengine\Events\MouseEvent.h" />
+    <ClInclude Include="src\Rengine\Layer.h" />
+    <ClInclude Include="src\Rengine\LayerStack.h" />
     <ClInclude Include="src\Rengine\Log.h" />
     <ClInclude Include="src\Rengine\Window.h" />
     <ClInclude Include="src\repch.h" />
@@ -165,6 +170,8 @@
   <ItemGroup>
     <ClCompile Include="src\Platform\WindowsWindow.cpp" />
     <ClCompile Include="src\Rengine\Application.cpp" />
+    <ClCompile Include="src\Rengine\Layer.cpp" />
+    <ClCompile Include="src\Rengine\LayerStack.cpp" />
     <ClCompile Include="src\Rengine\Log.cpp" />
     <ClCompile Include="src\repch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

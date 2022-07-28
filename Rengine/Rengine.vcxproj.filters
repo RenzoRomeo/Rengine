@@ -37,6 +37,12 @@
     <ClInclude Include="src\Rengine\Events\MouseEvent.h">
       <Filter>Rengine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rengine\Layer.h">
+      <Filter>Rengine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rengine\LayerStack.h">
+      <Filter>Rengine</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rengine\Log.h">
       <Filter>Rengine</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\Rengine\Application.cpp">
+      <Filter>Rengine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rengine\Layer.cpp">
+      <Filter>Rengine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rengine\LayerStack.cpp">
       <Filter>Rengine</Filter>
     </ClCompile>
     <ClCompile Include="src\Rengine\Log.cpp">
