@@ -39,6 +39,10 @@ namespace Rengine
 
 	class RENGINE_API KeyReleasedEvent : public KeyEvent
 	{
+	public:
+		KeyReleasedEvent(int key)
+			: KeyEvent(key) {}
+
 		std::string ToString() const override
 		{
 			std::stringstream ss;

@@ -17,7 +17,7 @@ namespace Rengine
 		inline unsigned int GetWidth() const { return m_Data.Width; }
 		inline unsigned int GetHeight() const { return m_Data.Height; }
 	
-		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.Callback = callback; }
+		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 	private:
@@ -33,7 +33,7 @@ namespace Rengine
 			unsigned int Width, Height;
 			bool VSync;
 
-			EventCallbackFn Callback;
+			EventCallbackFn EventCallback;
 		};
 
 		WindowData m_Data;
