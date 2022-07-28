@@ -11,12 +11,13 @@ public:
 
 	void OnUpdate() override
 	{
-		RE_INFO("ExampleLayer::Update");
+		if (Rengine::Input::IsKeyPressed(RE_KEY_TAB))
+			RE_TRACE("TAB");
 	}
 
 	void OnEvent(Rengine::Event& event) override
 	{
-		RE_TRACE("{0}", event);
+		// RE_TRACE("{0}", event);
 	}
 };
 

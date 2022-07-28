@@ -162,9 +162,11 @@
     <ClInclude Include="src\Rengine\Events\MouseEvent.h" />
     <ClInclude Include="src\Rengine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Rengine\Input.h" />
+    <ClInclude Include="src\Rengine\KeyCodes.h" />
     <ClInclude Include="src\Rengine\Layer.h" />
     <ClInclude Include="src\Rengine\LayerStack.h" />
     <ClInclude Include="src\Rengine\Log.h" />
+    <ClInclude Include="src\Rengine\MouseButtonCodes.h" />
     <ClInclude Include="src\Rengine\Window.h" />
     <ClInclude Include="src\repch.h" />
   </ItemGroup>
