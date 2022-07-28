@@ -13,9 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Dependencies
 IncludeDir = {}
 IncludeDir["GLFW"] = "Rengine/vendor/GLFW/include"
+IncludeDir["Glad"] = "Rengine/vendor/GLAD/include"
 
--- This line includes the premake file inside GLFW.
 include "Rengine/vendor/GLFW"
+include "Rengine/vendor/GLAD"
 
 project "Rengine"
 	location "Rengine"
@@ -38,12 +39,14 @@ project "Rengine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +58,8 @@ project "Rengine"
 		defines
 		{
 			"RE_PLATFORM_WINDOWS",
-			"RE_BUILD_DLL"
+			"RE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
