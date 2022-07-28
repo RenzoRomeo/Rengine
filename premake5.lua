@@ -18,9 +18,12 @@ IncludeDir["GLFW"] = "Rengine/vendor/GLFW/include"
 IncludeDir["Glad"] = "Rengine/vendor/Glad/include"
 IncludeDir["ImGui"] = "Rengine/vendor/imgui"
 
-include "Rengine/vendor/GLFW"
-include "Rengine/vendor/Glad"
-include "Rengine/vendor/imgui"
+group "Dependencies"
+	include "Rengine/vendor/GLFW"
+	include "Rengine/vendor/Glad"
+	include "Rengine/vendor/imgui"
+
+group ""
 
 project "Rengine"
 	location "Rengine"
