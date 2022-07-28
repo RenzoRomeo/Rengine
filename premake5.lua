@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Rengine/vendor/GLFW/include"
 IncludeDir["Glad"] = "Rengine/vendor/Glad/include"
 IncludeDir["ImGui"] = "Rengine/vendor/imgui"
+IncludeDir["glm"] = "Rengine/vendor/glm"
 
 group "Dependencies"
 	include "Rengine/vendor/GLFW"
@@ -40,7 +41,10 @@ project "Rengine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -111,7 +115,8 @@ project "Sandbox"
 	{
 		"Rengine/vendor/spdlog/include",
 		"Rengine/src",
-		"Rengine/vendor"
+		"Rengine/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links
