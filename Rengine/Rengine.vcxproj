@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -158,7 +159,9 @@
     <ClInclude Include="src\Rengine\LayerStack.h" />
     <ClInclude Include="src\Rengine\Log.h" />
     <ClInclude Include="src\Rengine\MouseButtonCodes.h" />
+    <ClInclude Include="src\Rengine\Renderer\Buffer.h" />
     <ClInclude Include="src\Rengine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Rengine\Renderer\Renderer.h" />
     <ClInclude Include="src\Rengine\Renderer\Shader.h" />
     <ClInclude Include="src\Rengine\Window.h" />
     <ClInclude Include="src\repch.h" />
@@ -579,6 +582,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
@@ -588,6 +592,8 @@
     <ClCompile Include="src\Rengine\Layer.cpp" />
     <ClCompile Include="src\Rengine\LayerStack.cpp" />
     <ClCompile Include="src\Rengine\Log.cpp" />
+    <ClCompile Include="src\Rengine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Rengine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Rengine\Renderer\Shader.cpp" />
     <ClCompile Include="src\repch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
