@@ -182,14 +182,4 @@ namespace Rengine
 	{
 		return m_Data.VSync;
 	}
-
-	const char* WindowsWindow::GetClipboardText() const
-	{
-		return glfwGetClipboardString(m_Window);
-	}
-
-	void WindowsWindow::SetClipboardText(const char* text)
-	{
-		glfwSetClipboardString(m_Window, text);
-	}
 }

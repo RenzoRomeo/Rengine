@@ -21,9 +21,6 @@ namespace Rengine
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-		const char* GetClipboardText() const override;
-		void SetClipboardText(const char* text) override;
-
 		inline virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);

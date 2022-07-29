@@ -7,6 +7,8 @@
 #include "Rengine/Events/Event.h"
 #include "Rengine/Events/ApplicationEvent.h"
 
+#include "Rengine/ImGui/ImGuiLayer.h"
+
 namespace Rengine
 {
 	class RENGINE_API Application
@@ -28,6 +30,7 @@ namespace Rengine
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

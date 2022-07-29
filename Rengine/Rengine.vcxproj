@@ -149,7 +149,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Rengine.h" />
@@ -586,10 +585,10 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Rengine\Application.cpp" />
+    <ClCompile Include="src\Rengine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Rengine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Rengine\Layer.cpp" />
     <ClCompile Include="src\Rengine\LayerStack.cpp" />

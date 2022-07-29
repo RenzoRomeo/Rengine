@@ -1,5 +1,7 @@
 #include <Rengine.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Rengine::Layer
 {
 public:
@@ -7,6 +9,13 @@ public:
 		: Layer("Example")
 	{
 
+	}
+
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello");
+		ImGui::End();
 	}
 
 	void OnUpdate() override
@@ -27,7 +36,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Rengine::ImGuiLayer());
 	}
 
 	~Sandbox()
