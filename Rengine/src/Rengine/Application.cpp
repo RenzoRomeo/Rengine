@@ -69,7 +69,7 @@ namespace Rengine
 			}
 		)";
 
-		m_Shader.reset(new Shader(vertexSource, fragmentSource));
+		m_Shader.reset(Shader::Create(vertexSource, fragmentSource));
 	}
 
 	Application::~Application()
