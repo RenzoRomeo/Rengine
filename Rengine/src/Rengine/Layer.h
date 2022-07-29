@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Rengine/Core.h"
+#include "Rengine/Core/Timestep.h"
 #include "Rengine/Events/Event.h"
 
 namespace Rengine
@@ -13,7 +14,7 @@ namespace Rengine
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnEvent(Event& event) {}
 		virtual void OnImGuiRender() {}
 

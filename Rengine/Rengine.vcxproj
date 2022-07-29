@@ -150,6 +150,7 @@
     <ClInclude Include="src\Rengine.h" />
     <ClInclude Include="src\Rengine\Application.h" />
     <ClInclude Include="src\Rengine\Core.h" />
+    <ClInclude Include="src\Rengine\Core\Timestep.h" />
     <ClInclude Include="src\Rengine\EntryPoint.h" />
     <ClInclude Include="src\Rengine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Rengine\Events\Event.h" />
