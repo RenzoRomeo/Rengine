@@ -7,9 +7,4 @@ namespace Rengine
 		: m_DebugName(name)
 	{
 	}
-
-	Layer::~Layer()
-	{
-	}
-
 }

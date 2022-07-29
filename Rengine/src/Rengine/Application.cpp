@@ -131,11 +131,6 @@ namespace Rengine
 		m_SquareShader.reset(Shader::Create(squareVertexSource, squareFragmentSource));
 	}
 
-	Application::~Application()
-	{
-
-	}
-
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
