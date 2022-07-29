@@ -42,5 +42,4 @@ namespace Rengine
 		auto [x, y] = GetMousePositionImpl();
 		return y;
 	}
-
 }

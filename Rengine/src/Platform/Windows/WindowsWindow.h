@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Rengine/Window.h"
+#include "Rengine/Renderer/GraphicsContext.h"
 
 struct GLFWwindow;
 
@@ -28,6 +29,7 @@ namespace Rengine
 
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

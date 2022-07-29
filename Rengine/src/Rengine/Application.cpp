@@ -1,16 +1,14 @@
 #include "repch.h"
 #include "Application.h"
 
+#include "Rengine/Core.h"
 #include "Rengine/Log.h"
-
 #include "Rengine/Input.h"
 
 #include <glad/glad.h>
 
 namespace Rengine
 {
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
@@ -19,7 +17,7 @@ namespace Rengine
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+		m_Window->SetEventCallback(RE_BIND_EVENT_FN(Application::OnEvent));
 		
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -33,7 +31,7 @@ namespace Rengine
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowCloseEvent>(RE_BIND_EVENT_FN(Application::OnWindowClose));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
