@@ -13,8 +13,8 @@ namespace Rengine
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: RE_CORE_ASSERT(false, "RendererAPI::None is not supported"); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLShader(vertexSrc, fragmentSrc);
+			case RendererAPI::API::None: RE_CORE_ASSERT(false, "RendererAPI::None is not supported"); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLShader(vertexSrc, fragmentSrc);
 		}
 		RE_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;

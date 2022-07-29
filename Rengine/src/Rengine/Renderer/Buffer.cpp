@@ -3,9 +3,6 @@
 
 #include "Renderer.h"
 
-#include "Rengine/Log.h"
-#include "Rengine/Core.h"
-
 #include "Platform/OpenGL/OpenGLBuffer.h"
 
 namespace Rengine
@@ -14,8 +11,8 @@ namespace Rengine
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: RE_CORE_ASSERT(false, "RendererAPI::None is not supported"); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+			case RendererAPI::API::None: RE_CORE_ASSERT(false, "RendererAPI::None is not supported"); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
 		RE_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
@@ -25,8 +22,8 @@ namespace Rengine
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: RE_CORE_ASSERT(false, "RendererAPI::None is not supported"); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, count);
+			case RendererAPI::API::None: RE_CORE_ASSERT(false, "RendererAPI::None is not supported"); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, count);
 		}
 		RE_CORE_ASSERT(false, "Unknown RendererAPI");
 		return nullptr;
