@@ -12,6 +12,8 @@
 #include "Rengine/Renderer/Shader.h"
 #include "Rengine/Renderer/VertexArray.h"
 
+#include "Rengine/Renderer/OrthographicCamera.h"
+
 namespace Rengine
 {
 	class RENGINE_API Application
@@ -42,6 +44,8 @@ namespace Rengine
 
 		std::shared_ptr<Shader> m_SquareShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

@@ -2,6 +2,8 @@
 
 #include "Rengine/Renderer/RendererAPI.h"
 
+#include <glm/glm.hpp>
+
 namespace Rengine
 {
 	class OpenGLRendererAPI : public RendererAPI
