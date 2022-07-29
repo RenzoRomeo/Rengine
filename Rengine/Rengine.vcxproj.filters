@@ -1350,6 +1350,8 @@
     <ClInclude Include="src\Rengine\Renderer\Buffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Rengine\Renderer\Renderer.h" />
+    <ClInclude Include="src\Rengine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1385,6 +1387,8 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Rengine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Rengine\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Rengine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Rengine\Renderer\Shader.h" />

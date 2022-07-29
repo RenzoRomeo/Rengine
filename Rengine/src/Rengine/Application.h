@@ -11,6 +11,7 @@
 
 #include "Rengine/Renderer/Shader.h"
 #include "Rengine/Renderer/Buffer.h"
+#include "Rengine/Renderer/VertexArray.h"
 
 namespace Rengine
 {
@@ -37,10 +38,11 @@ namespace Rengine
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		std::shared_ptr<Shader> m_SquareShader;
+		std::shared_ptr<VertexArray> m_SquareVA;
 	private:
 		static Application* s_Instance;
 	};
