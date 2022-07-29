@@ -26,11 +26,11 @@ namespace Rengine
 #define RE_CORE_INFO(...)    ::Rengine::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define RE_CORE_WARN(...)    ::Rengine::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define RE_CORE_ERROR(...)   ::Rengine::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define RE_CORE_FATAL(...)   ::Rengine::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define RE_CORE_CRITICAL(...)   ::Rengine::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
 #define RE_TRACE(...)        ::Rengine::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define RE_INFO(...)         ::Rengine::Log::GetClientLogger()->info(__VA_ARGS__)
 #define RE_WARN(...)         ::Rengine::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define RE_ERROR(...)        ::Rengine::Log::GetClientLogger()->error(__VA_ARGS__)
-#define RE_FATAL(...)        ::Rengine::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define RE_CRITICAL(...)        ::Rengine::Log::GetClientLogger()->critical(__VA_ARGS__)
