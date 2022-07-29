@@ -1,5 +1,6 @@
 workspace "Rengine"
 	architecture "x64"
+    startproject "Sandbox"
 
 	configurations
 	{
@@ -7,8 +8,6 @@ workspace "Rengine"
 		"Release",
 		"Dist"
 	}
-
-startproject "Sandbox"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -28,9 +27,10 @@ group ""
 
 project "Rengine"
 	location "Rengine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-        staticruntime "off"
+    cppdialect "C++20"
+    staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -45,6 +45,11 @@ project "Rengine"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -65,7 +70,6 @@ project "Rengine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
 		systemversion "latest"
 
 		defines
@@ -75,32 +79,27 @@ project "Rengine"
 			"GLFW_INCLUDE_NONE"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-
-		}
-
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
-                runtime "Debug"
-		symbols "On"
+        runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "RE_RELEASE"
-                runtime "Release"
-		optimize "On"
+        runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "RE_DIST"
-                runtime "Release"
-		optimize "On"
+        runtime "Release"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+    cppdialect "C++20"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -125,7 +124,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++20"
 		systemversion "latest"
 
 		defines
@@ -135,15 +133,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
-                runtime "Debug"
-		symbols "On"
+        runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "RE_RELEASE"
-                runtime "Release"
-		optimize "On"
+        runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "RE_DIST"
-                runtime "Release"
-		optimize "On"
+        runtime "Release"
+		optimize "on"
