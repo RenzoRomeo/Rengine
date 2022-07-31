@@ -3,12 +3,14 @@
 #include "imgui/imgui.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class ExampleLayer : public Rengine::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquareColor(0.8f, 0.2f, 0.3f, 1.0f)
 	{
 		float vertices[7 * 3] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -43,6 +45,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -51,7 +54,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -102,10 +105,11 @@ public:
 			layout(location = 0) in vec3 a_Position;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 			
 			void main()
 			{
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -114,18 +118,15 @@ public:
 
 			layout(location = 0) out vec4 color;
 
+			uniform vec4 u_Color;
+
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = u_Color;
 			}
 		)";
 
 		m_SquareShader.reset(Rengine::Shader::Create(squareVertexSource, squareFragmentSource));
-	}
-
-	void OnImGuiRender() override
-	{
-
 	}
 
 	void OnUpdate(Rengine::Timestep ts) override
@@ -155,8 +156,20 @@ public:
 
 		Rengine::Renderer::BeginScene(m_Camera);
 
-		Rengine::Renderer::Submit(m_SquareShader, m_SquareVA);
-		Rengine::Renderer::Submit(m_Shader, m_VertexArray);
+		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				m_SquareShader->UploadUniformFloat4("u_Color", m_SquareColor);
+				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Rengine::Renderer::Submit(m_SquareShader, m_SquareVA, transform);
+			}
+		}
+
+		//Rengine::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Rengine::Renderer::EndScene();
 	}
@@ -166,12 +179,20 @@ public:
 
 	}
 
-private:
-	std::shared_ptr<Rengine::Shader> m_Shader;
-	std::shared_ptr<Rengine::VertexArray> m_VertexArray;
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit4("Square color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
+	}
 
-	std::shared_ptr<Rengine::Shader> m_SquareShader;
-	std::shared_ptr<Rengine::VertexArray> m_SquareVA;
+private:
+	Rengine::Ref<Rengine::Shader> m_Shader;
+	Rengine::Ref<Rengine::VertexArray> m_VertexArray;
+
+	Rengine::Ref<Rengine::Shader> m_SquareShader;
+	Rengine::Ref<Rengine::VertexArray> m_SquareVA;
+	glm::vec4 m_SquareColor;
 
 	Rengine::OrthographicCamera m_Camera;
 

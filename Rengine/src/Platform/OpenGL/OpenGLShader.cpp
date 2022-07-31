@@ -129,9 +129,62 @@ namespace Rengine
 		glUseProgram(0);
 	}
 
+	GLint OpenGLShader::GetUniformLocation(const std::string& name) const
+	{
+		if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
+			return m_UniformLocationCache[name];
+
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		if (location == -1)
+		{
+			RE_CORE_WARN("Uniform {0} not found", name);
+			return location;
+		}
+
+		m_UniformLocationCache[name] = location;
+		return location;
+	}
+
+	void OpenGLShader::UpdateUniformInt(const std::string& name, int value)
+	{
+		GLint location = GetUniformLocation(name);
+		glUniform1i(location, value);
+	}
+
+	void OpenGLShader::UpdateUniformFloat(const std::string& name, float value)
+	{
+		GLint location = GetUniformLocation(name);
+		glUniform1f(location, value);
+	}
+
+	void OpenGLShader::UpdateUniformFloat2(const std::string& name, const glm::vec2& value)
+	{
+		GLint location = GetUniformLocation(name);
+		glUniform2f(location, value.x, value.y);
+	}
+
+	void OpenGLShader::UpdateUniformFloat3(const std::string& name, const glm::vec3& value)
+	{
+		GLint location = GetUniformLocation(name);
+		glUniform3f(location, value.x, value.y, value.z);
+	}
+
+	void OpenGLShader::UploadUniformFloat4(const std::string& name, const glm::vec4& value)
+	{
+		GLint location = GetUniformLocation(name);
+		glUniform4f(location, value.x, value.y, value.z, value.w);
+	}
+
+	void OpenGLShader::UploadUniformMat3(const std::string& name, const glm::mat3& matrix)
+	{
+		GLint location = GetUniformLocation(name);
+		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+	}
+
 	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
-		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		GLint location = GetUniformLocation(name);
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
+
 }
