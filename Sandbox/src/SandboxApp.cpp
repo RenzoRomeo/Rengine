@@ -72,7 +72,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Rengine::Shader::Create(vertexSource, fragmentSource));
+		m_Shader = Rengine::Shader::Create(vertexSource, fragmentSource);
 
 
 		m_SquareVA.reset(Rengine::VertexArray::Create());
@@ -129,7 +129,7 @@ public:
 			}
 		)";
 
-		m_SquareShader.reset(Rengine::Shader::Create(squareVertexSource, squareFragmentSource));
+		m_SquareShader = Rengine::Shader::Create(squareVertexSource, squareFragmentSource);
 
 		std::string textureVertexSource = R"(
 			#version 330 core
@@ -164,7 +164,7 @@ public:
 			}
 		)";
 
-		m_TextureShader.reset(Rengine::Shader::Create(textureVertexSource, textureFragmentSource));
+		m_TextureShader = Rengine::Shader::Create(textureVertexSource, textureFragmentSource);
 
 		m_Texture = Rengine::Texture2D::Create("assets/textures/Checkerboard.png");
 

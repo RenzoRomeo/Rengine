@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "Rengine/Core.h"
+
 #include <glm/glm.hpp>
 
 namespace Rengine
@@ -22,6 +24,6 @@ namespace Rengine
 		virtual void UploadUniformMat3(const std::string& name, const glm::mat3& matrix) = 0;
 		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) = 0;
 
-		static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
+		static Ref<Shader> Create(const std::string& vertexSrc, const std::string& fragmentSrc);
 	};
 }
