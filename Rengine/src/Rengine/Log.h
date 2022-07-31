@@ -8,7 +8,7 @@
 
 namespace Rengine
 {
-	class RENGINE_API Log
+	class Log
 	{
 	public:
 		static void Init();

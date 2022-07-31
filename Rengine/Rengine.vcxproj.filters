@@ -16,6 +16,9 @@
     <Filter Include="src\Rengine">
       <UniqueIdentifier>{84EABAA8-F09F-339E-7994-2D75E5482AA2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Rengine\Core">
+      <UniqueIdentifier>{5C417F3B-483A-9E8D-716C-83125DC47D99}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Rengine\Events">
       <UniqueIdentifier>{E819771D-D4FD-3773-3D5E-32C6296122F5}</UniqueIdentifier>
     </Filter>
@@ -46,6 +49,9 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
@@ -58,6 +64,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
@@ -77,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="src\Rengine\Core.h">
       <Filter>src\Rengine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rengine\Core\Timestep.h">
+      <Filter>src\Rengine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Rengine\EntryPoint.h">
       <Filter>src\Rengine</Filter>
@@ -120,6 +132,9 @@
     <ClInclude Include="src\Rengine\Renderer\GraphicsContext.h">
       <Filter>src\Rengine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rengine\Renderer\OrthographicCamera.h">
+      <Filter>src\Rengine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Rengine\Renderer\RenderCommand.h">
       <Filter>src\Rengine\Renderer</Filter>
     </ClInclude>
@@ -130,6 +145,9 @@
       <Filter>src\Rengine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Rengine\Renderer\Shader.h">
+      <Filter>src\Rengine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rengine\Renderer\Texture.h">
       <Filter>src\Rengine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Rengine\Renderer\VertexArray.h">
@@ -1386,8 +1404,9 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Rengine\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Rengine\Core\Timestep.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1400,6 +1419,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
@@ -1432,6 +1454,9 @@
     <ClCompile Include="src\Rengine\Renderer\Buffer.cpp">
       <Filter>src\Rengine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rengine\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Rengine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rengine\Renderer\RenderCommand.cpp">
       <Filter>src\Rengine\Renderer</Filter>
     </ClCompile>
@@ -1444,12 +1469,17 @@
     <ClCompile Include="src\Rengine\Renderer\Shader.cpp">
       <Filter>src\Rengine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Rengine\Renderer\Texture.cpp">
+      <Filter>src\Rengine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Rengine\Renderer\VertexArray.cpp">
       <Filter>src\Rengine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rengine\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

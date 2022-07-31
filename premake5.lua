@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Rengine/vendor/GLFW/include"
 IncludeDir["Glad"] = "Rengine/vendor/Glad/include"
 IncludeDir["ImGui"] = "Rengine/vendor/imgui"
 IncludeDir["glm"] = "Rengine/vendor/glm"
+IncludeDir["stb_image"] = "Rengine/vendor/stb_image"
 
 group "Dependencies"
 	include "Rengine/vendor/GLFW"
@@ -45,6 +46,8 @@ project "Rengine"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
 	}
 
 	defines
@@ -60,6 +63,7 @@ project "Rengine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}",
 	}
 
 	links

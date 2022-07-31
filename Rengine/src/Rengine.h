@@ -20,6 +20,7 @@
 
 #include "Rengine/Renderer/Buffer.h"
 #include "Rengine/Renderer/Shader.h"
+#include "Rengine/Renderer/Texture.h"
 #include "Rengine/Renderer/VertexArray.h"
 
 #include "Rengine/Renderer/OrthographicCamera.h"

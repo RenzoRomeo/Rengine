@@ -19,11 +19,10 @@ namespace Rengine
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 
-		virtual void UpdateUniformInt(const std::string& name, int value) override;
-
-		virtual void UpdateUniformFloat(const std::string& name, float value) override;
-		virtual void UpdateUniformFloat2(const std::string& name, const glm::vec2& value) override;
-		virtual void UpdateUniformFloat3(const std::string& name, const glm::vec3& value) override;
+		virtual void UploadUniformInt(const std::string& name, int value) override;
+		virtual void UploadUniformFloat(const std::string& name, float value) override;
+		virtual void UploadUniformFloat2(const std::string& name, const glm::vec2& value) override;
+		virtual void UploadUniformFloat3(const std::string& name, const glm::vec3& value) override;
 		virtual void UploadUniformFloat4(const std::string& name, const glm::vec4& value) override;
 		virtual void UploadUniformMat3(const std::string& name, const glm::mat3& matrix) override;
 		virtual void UploadUniformMat4(const std::string& name, const glm::mat4& matrix) override;

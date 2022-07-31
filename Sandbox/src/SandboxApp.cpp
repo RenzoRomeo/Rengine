@@ -80,15 +80,18 @@ public:
 		std::shared_ptr<Rengine::VertexBuffer> m_SquareVB;
 		std::shared_ptr<Rengine::IndexBuffer> m_SquareIB;
 
-		float squareVertices[4 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
+		float squareVertices[4 * 5] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		m_SquareVB.reset(Rengine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-		m_SquareVB->SetLayout({ {Rengine::ShaderDataType::Float3, "a_Position"} });
+		m_SquareVB->SetLayout({
+			{Rengine::ShaderDataType::Float3, "a_Position"},
+			{Rengine::ShaderDataType::Float2, "a_TexCoord"}
+			});
 		m_SquareVA->AddVertexBuffer(m_SquareVB);
 
 		uint32_t squareIndices[6] = {
@@ -127,6 +130,47 @@ public:
 		)";
 
 		m_SquareShader.reset(Rengine::Shader::Create(squareVertexSource, squareFragmentSource));
+
+		std::string textureVertexSource = R"(
+			#version 330 core
+
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			out vec2 v_TexCoord;
+			
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+			
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+		)";
+
+		std::string textureFragmentSource = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Rengine::Shader::Create(textureVertexSource, textureFragmentSource));
+
+		m_Texture = Rengine::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		m_Texture->Bind();
+		m_TextureShader->Bind();
+		m_TextureShader->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Rengine::Timestep ts) override
@@ -158,9 +202,9 @@ public:
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 20; i++)
 		{
-			for (int j = 0; j < 5; j++)
+			for (int j = 0; j < 20; j++)
 			{
 				m_SquareShader->UploadUniformFloat4("u_Color", m_SquareColor);
 				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
@@ -168,6 +212,8 @@ public:
 				Rengine::Renderer::Submit(m_SquareShader, m_SquareVA, transform);
 			}
 		}
+
+		Rengine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		//Rengine::Renderer::Submit(m_Shader, m_VertexArray);
 
@@ -187,9 +233,10 @@ public:
 	}
 
 private:
-	Rengine::Ref<Rengine::Shader> m_Shader;
+	Rengine::Ref<Rengine::Shader> m_Shader, m_TextureShader;
 	Rengine::Ref<Rengine::VertexArray> m_VertexArray;
 
+	Rengine::Ref<Rengine::Texture2D> m_Texture;
 	Rengine::Ref<Rengine::Shader> m_SquareShader;
 	Rengine::Ref<Rengine::VertexArray> m_SquareVA;
 	glm::vec4 m_SquareColor;
@@ -219,5 +266,7 @@ public:
 
 Rengine::Application* Rengine::CreateApplication()
 {
+	Rengine::WindowProps props("Sandbox, 600, 600");
+
 	return new Sandbox();
 }

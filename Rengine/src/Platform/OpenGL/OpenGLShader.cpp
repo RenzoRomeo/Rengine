@@ -145,25 +145,25 @@ namespace Rengine
 		return location;
 	}
 
-	void OpenGLShader::UpdateUniformInt(const std::string& name, int value)
+	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
 	{
 		GLint location = GetUniformLocation(name);
 		glUniform1i(location, value);
 	}
 
-	void OpenGLShader::UpdateUniformFloat(const std::string& name, float value)
+	void OpenGLShader::UploadUniformFloat(const std::string& name, float value)
 	{
 		GLint location = GetUniformLocation(name);
 		glUniform1f(location, value);
 	}
 
-	void OpenGLShader::UpdateUniformFloat2(const std::string& name, const glm::vec2& value)
+	void OpenGLShader::UploadUniformFloat2(const std::string& name, const glm::vec2& value)
 	{
 		GLint location = GetUniformLocation(name);
 		glUniform2f(location, value.x, value.y);
 	}
 
-	void OpenGLShader::UpdateUniformFloat3(const std::string& name, const glm::vec3& value)
+	void OpenGLShader::UploadUniformFloat3(const std::string& name, const glm::vec3& value)
 	{
 		GLint location = GetUniformLocation(name);
 		glUniform3f(location, value.x, value.y, value.z);
