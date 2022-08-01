@@ -50,11 +50,6 @@ namespace Rengine
 
 	class EventDispatcher
 	{
-		// EventFn is a function that recieves a reference to T (an event)
-		// and returns a boolean.
-		template<typename T>
-		using EventFn = std::function<bool(T&)>;
-
 	public:
 		EventDispatcher(Event& event)
 			: m_Event(event)
@@ -62,17 +57,12 @@ namespace Rengine
 
 		}
 
-		// This method recieves an EventFn (specialized with T, an event type)
-		// Example:
-		//			Dispatch<WindowResize>
-		//			Dispatch(EventFn<WindowResize>)
-		//			Dispatch(std::function<bool(WindowResize&)>) 
-		template<typename T>
-		bool Dispatch(EventFn<T> func)
+		template<typename T, typename F>
+		bool Dispatch(const F& func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(static_cast<T&>(m_Event));
 				return true;
 			}
 			return false;
