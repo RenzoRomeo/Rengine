@@ -2,7 +2,7 @@
 
 #include "repch.h"
 
-#include "Rengine/Core.h"
+#include "Rengine/Core/Core.h"
 #include "Rengine/Events/Event.h"
 
 namespace Rengine

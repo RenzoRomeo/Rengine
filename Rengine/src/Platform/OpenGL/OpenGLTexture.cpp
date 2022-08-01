@@ -1,8 +1,8 @@
 #include "repch.h"
 #include "OpenGLTexture.h"
 
-#include "Rengine/Log.h"
-#include "Rengine/Core.h"
+#include "Rengine/Core/Log.h"
+#include "Rengine/Core/Core.h"
 
 #include "stb_image.h"
 

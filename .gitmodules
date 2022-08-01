@@ -4,9 +4,12 @@
 [submodule "Rengine/vendor/GLFW"]
 	path = Rengine/vendor/GLFW
 	url = https://github.com/RenzoRomeo/glfw
+	branch = master
 [submodule "Rengine/vendor/imgui"]
 	path = Rengine/vendor/imgui
 	url = https://github.com/RenzoRomeo/imgui
+	branch = docking
 [submodule "Rengine/vendor/glm"]
 	path = Rengine/vendor/glm
 	url = https://github.com/g-truc/glm
+	branch = master

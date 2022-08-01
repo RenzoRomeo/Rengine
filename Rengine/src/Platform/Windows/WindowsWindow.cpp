@@ -1,8 +1,8 @@
 #include "repch.h"
 #include "WindowsWindow.h"
 
-#include "Rengine/Core.h"
-#include "Rengine/Log.h"
+#include "Rengine/Core/Core.h"
+#include "Rengine/Core/Log.h"
 
 #include "Rengine/Events/ApplicationEvent.h"
 #include "Rengine/Events/MouseEvent.h"
@@ -53,7 +53,7 @@ namespace Rengine
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
-		m_Context = new OpenGLContext(m_Window);
+		m_Context = CreateScope<OpenGLContext>(m_Window);
 		m_Context->Init();
 		
 		glfwSetWindowUserPointer(m_Window, &m_Data);

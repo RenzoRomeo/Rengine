@@ -1,8 +1,8 @@
 #include "repch.h"
 #include "Shader.h"
 
-#include "Rengine/Log.h"
-#include "Rengine/Core.h"
+#include "Rengine/Core/Log.h"
+#include "Rengine/Core/Core.h"
 #include "Rengine/Renderer/Renderer.h"
 
 #include "Platform/OpenGL/OpenGLShader.h"

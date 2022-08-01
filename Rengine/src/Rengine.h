@@ -2,17 +2,17 @@
 
 // For use by Rengine applications (client)
 
-#include "Rengine/Application.h"
+#include "Rengine/Core/Application.h"
 
-#include "Rengine/Input.h"
-#include "Rengine/KeyCodes.h"
-#include "Rengine/MouseButtonCodes.h"
+#include "Rengine/Core/Input.h"
+#include "Rengine/Core/KeyCodes.h"
+#include "Rengine/Core/MouseButtonCodes.h"
 
 #include "Rengine/Core/Timestep.h"
 
 #include "Rengine/ImGui/ImGuiLayer.h"
-#include "Rengine/Layer.h"
-#include "Rengine/Log.h"
+#include "Rengine/Core/Layer.h"
+#include "Rengine/Core/Log.h"
 #include "Rengine/Renderer/OrthographicCameraController.h"
 
 // --- Renderer -----------------------------
@@ -25,6 +25,3 @@
 #include "Rengine/Renderer/VertexArray.h"
 
 #include "Rengine/Renderer/OrthographicCamera.h"
-
-// --- Entry Point -----------------------------
-#include "Rengine/EntryPoint.h"

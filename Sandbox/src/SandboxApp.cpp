@@ -1,4 +1,7 @@
 #include <Rengine.h>
+#include <Rengine/Core/EntryPoint.h>
+
+#include "Sandbox2D.h"
 
 #include "imgui/imgui.h"
 
@@ -18,12 +21,12 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		m_VertexArray.reset(Rengine::VertexArray::Create());
+		m_VertexArray = Rengine::VertexArray::Create();
 
 		std::shared_ptr<Rengine::VertexBuffer> m_VertexBuffer;
 		std::shared_ptr<Rengine::IndexBuffer> m_IndexBuffer;
 
-		m_VertexBuffer.reset(Rengine::VertexBuffer::Create(vertices, sizeof(vertices)));
+		m_VertexBuffer = Rengine::VertexBuffer::Create(vertices, sizeof(vertices));
 		Rengine::BufferLayout layout = {
 			{ Rengine::ShaderDataType::Float3, "a_Position" },
 			{ Rengine::ShaderDataType::Float4, "a_Color" },
@@ -35,7 +38,7 @@ public:
 			0, 1, 2
 		};
 
-		m_IndexBuffer.reset(Rengine::IndexBuffer::Create(indices, 3));
+		m_IndexBuffer = Rengine::IndexBuffer::Create(indices, 3);
 		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
 
 		std::string vertexSource = R"(
@@ -72,7 +75,7 @@ public:
 			}
 		)";
 
-		m_SquareVA.reset(Rengine::VertexArray::Create());
+		m_SquareVA = Rengine::VertexArray::Create();
 
 		std::shared_ptr<Rengine::VertexBuffer> m_SquareVB;
 		std::shared_ptr<Rengine::IndexBuffer> m_SquareIB;
@@ -84,7 +87,7 @@ public:
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		m_SquareVB.reset(Rengine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		m_SquareVB = Rengine::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		m_SquareVB->SetLayout({
 			{Rengine::ShaderDataType::Float3, "a_Position"},
 			{Rengine::ShaderDataType::Float2, "a_TexCoord"}
@@ -96,7 +99,7 @@ public:
 			2, 3, 0
 		};
 
-		m_SquareIB.reset(Rengine::IndexBuffer::Create(squareIndices, 6));
+		m_SquareIB = Rengine::IndexBuffer::Create(squareIndices, 6);
 		m_SquareVA->SetIndexBuffer(m_SquareIB);
 
 		std::string squareVertexSource = R"(
@@ -196,7 +199,8 @@ class Sandbox : public Rengine::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		// PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()

@@ -1,12 +1,12 @@
 #include "repch.h"
 #include "Application.h"
 
-#include "Rengine/Core.h"
-#include "Rengine/Log.h"
-#include "Rengine/Input.h"
+#include "Rengine/Core/Core.h"
+#include "Rengine/Core/Log.h"
+#include "Rengine/Core/Input.h"
 #include "Rengine/Renderer/Renderer.h"
 
-#include "Rengine/KeyCodes.h"
+#include "Rengine/Core/KeyCodes.h"
 
 #include <GLFW/glfw3.h>
 

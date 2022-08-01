@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Rengine/Application.h"
-#include "Rengine/Log.h"
+#include "Rengine/Core/Application.h"
+#include "Rengine/Core/Log.h"
 
 #ifdef RE_PLATFORM_WINDOWS
 
