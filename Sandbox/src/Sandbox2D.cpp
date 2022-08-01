@@ -56,13 +56,10 @@ void Sandbox2D::OnUpdate(Rengine::Timestep ts)
 
 	Rengine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	Rengine::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, {0.8f, 0.2f, 0.3f, 1.0});
+	Rengine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, {0.8f, 0.2f, 0.3f, 1.0});
+	Rengine::Renderer2D::DrawQuad({ 0.5f, -1.0f }, { 0.5f, 0.75f }, {0.2f, 0.3f, 0.8f, 1.0});
 
 	Rengine::Renderer2D::EndScene();
-
-	m_FlatColorShader->Bind();
-	m_FlatColorShader->UploadUniformFloat4("u_Color", m_SquareColor);
-
 }
 
 void Sandbox2D::OnImGuiRender()

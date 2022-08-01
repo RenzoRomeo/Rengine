@@ -9,6 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+/*
 class ExampleLayer : public Rengine::Layer
 {
 public:
@@ -136,7 +137,7 @@ public:
 		m_Texture = Rengine::Texture2D::Create("assets/textures/Checkerboard.png");
 
 		m_Texture->Bind();
-		textureShader->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Rengine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Rengine::Timestep ts) override
@@ -156,7 +157,7 @@ public:
 		{
 			for (int j = 0; j < 20; j++)
 			{
-				m_SquareShader->UploadUniformFloat4("u_Color", m_SquareColor);
+				std::dynamic_pointer_cast<Rengine::OpenGLShader>(m_SquareShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 				glm::vec3 pos(i * 0.11f, j * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 				Rengine::Renderer::Submit(m_SquareShader, m_SquareVA, transform);
@@ -193,6 +194,7 @@ private:
 
 	Rengine::OrthographicCameraController m_CameraController;
 };
+*/
 
 class Sandbox : public Rengine::Application
 {
