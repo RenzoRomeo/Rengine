@@ -68,6 +68,8 @@ namespace Rengine
 
 				WindowResizeEvent event(width, height);
 				data.EventCallback(event);
+
+				RE_CORE_WARN("{0} {1}", width, height);
 			}
 		);
 

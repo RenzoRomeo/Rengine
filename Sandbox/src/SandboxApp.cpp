@@ -138,8 +138,6 @@ public:
 
 	void OnUpdate(Rengine::Timestep ts) override
 	{
-		RE_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
-
 		// Updates
 		m_CameraController.OnUpdate(ts);
 
@@ -169,9 +167,9 @@ public:
 		Rengine::Renderer::EndScene();
 	}
 
-	void OnEvent(Rengine::Event& event) override
+	void OnEvent(Rengine::Event& e) override
 	{
-		m_CameraController.OnEvent(event);
+		m_CameraController.OnEvent(e);
 	}
 
 	void OnImGuiRender() override
