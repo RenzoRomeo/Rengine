@@ -14,10 +14,12 @@ public:
 	virtual void OnImGuiRender() override;
 	virtual void OnEvent(Rengine::Event& e) override;
 private:
+	Rengine::OrthographicCameraController m_CameraController;
+
+	// Temp
 	Rengine::Ref<Rengine::VertexArray> m_SquareVA;
 	Rengine::Ref<Rengine::Shader> m_FlatColorShader;
-	Rengine::Ref<Rengine::Texture2D> m_Texture;
-	Rengine::OrthographicCameraController m_CameraController;
+	Rengine::Ref<Rengine::Texture2D> m_CheckerboardTexture;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
