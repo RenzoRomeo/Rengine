@@ -17,6 +17,7 @@
 
 // --- Renderer -----------------------------
 #include "Rengine/Renderer/Renderer.h"
+#include "Rengine/Renderer/Renderer2D.h"
 #include "Rengine/Renderer/RenderCommand.h"
 
 #include "Rengine/Renderer/Buffer.h"

@@ -171,6 +171,7 @@
     <ClInclude Include="src\Rengine\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Rengine\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Rengine\Renderer\Renderer.h" />
+    <ClInclude Include="src\Rengine\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Rengine\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Rengine\Renderer\Shader.h" />
     <ClInclude Include="src\Rengine\Renderer\Texture.h" />
@@ -613,6 +614,7 @@
     <ClCompile Include="src\Rengine\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Rengine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Rengine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Rengine\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Rengine\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Rengine\Renderer\Shader.cpp" />
     <ClCompile Include="src\Rengine\Renderer\Texture.cpp" />
