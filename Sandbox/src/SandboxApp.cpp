@@ -10,7 +10,7 @@ class ExampleLayer : public Rengine::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquareColor(0.8f, 0.2f, 0.3f, 1.0f)
+		: Layer("Example"), m_SquareColor(0.8f, 0.2f, 0.3f, 1.0f), m_CameraController(16.0f / 9.0f)
 	{
 		float vertices[7 * 3] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -72,9 +72,6 @@ public:
 			}
 		)";
 
-		m_Shader = Rengine::Shader::Create(vertexSource, fragmentSource);
-
-
 		m_SquareVA.reset(Rengine::VertexArray::Create());
 
 		std::shared_ptr<Rengine::VertexBuffer> m_SquareVB;
@@ -129,76 +126,28 @@ public:
 			}
 		)";
 
-		m_SquareShader = Rengine::Shader::Create(squareVertexSource, squareFragmentSource);
+		m_SquareShader = Rengine::Shader::Create("square", squareVertexSource, squareFragmentSource);
 
-		std::string textureVertexSource = R"(
-			#version 330 core
-
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-
-			out vec2 v_TexCoord;
-			
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-			
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-		)";
-
-		std::string textureFragmentSource = R"(
-			#version 330 core
-
-			layout(location = 0) out vec4 color;
-
-			in vec2 v_TexCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				color = texture(u_Texture, v_TexCoord);
-			}
-		)";
-
-		m_TextureShader = Rengine::Shader::Create(textureVertexSource, textureFragmentSource);
+		auto textureShader = m_Shaders.Load("Texture", "assets/shaders/Texture.glsl");
 
 		m_Texture = Rengine::Texture2D::Create("assets/textures/Checkerboard.png");
 
 		m_Texture->Bind();
-		m_TextureShader->Bind();
-		m_TextureShader->UploadUniformInt("u_Texture", 0);
+		textureShader->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Rengine::Timestep ts) override
 	{
 		RE_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 
-		if (Rengine::Input::IsKeyPressed(RE_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		else if (Rengine::Input::IsKeyPressed(RE_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
+		// Updates
+		m_CameraController.OnUpdate(ts);
 
-		if (Rengine::Input::IsKeyPressed(RE_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-		else if (Rengine::Input::IsKeyPressed(RE_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		if (Rengine::Input::IsKeyPressed(RE_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		else if (Rengine::Input::IsKeyPressed(RE_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
-		Rengine::RenderCommand::SetClearColor({ 0.1f,0.1f,0.1f,1.0f });
+		// Rendering
+		Rengine::RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 0.1f});
 		Rengine::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Rengine::Renderer::BeginScene(m_Camera);
+		Rengine::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -213,16 +162,16 @@ public:
 			}
 		}
 
-		Rengine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		auto textureShader = m_Shaders.Get("Texture");
 
-		//Rengine::Renderer::Submit(m_Shader, m_VertexArray);
+		Rengine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		Rengine::Renderer::EndScene();
 	}
 
 	void OnEvent(Rengine::Event& event) override
 	{
-
+		m_CameraController.OnEvent(event);
 	}
 
 	void OnImGuiRender() override
@@ -233,7 +182,7 @@ public:
 	}
 
 private:
-	Rengine::Ref<Rengine::Shader> m_Shader, m_TextureShader;
+	Rengine::ShaderLibrary m_Shaders;
 	Rengine::Ref<Rengine::VertexArray> m_VertexArray;
 
 	Rengine::Ref<Rengine::Texture2D> m_Texture;
@@ -241,13 +190,7 @@ private:
 	Rengine::Ref<Rengine::VertexArray> m_SquareVA;
 	glm::vec4 m_SquareColor;
 
-	Rengine::OrthographicCamera m_Camera;
-
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 5.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
+	Rengine::OrthographicCameraController m_CameraController;
 };
 
 class Sandbox : public Rengine::Application
