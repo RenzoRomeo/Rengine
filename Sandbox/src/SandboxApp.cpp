@@ -201,7 +201,6 @@ class Sandbox : public Rengine::Application
 public:
 	Sandbox()
 	{
-		// PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
 	}
 
@@ -213,7 +212,5 @@ public:
 
 Rengine::Application* Rengine::CreateApplication()
 {
-	Rengine::WindowProps props("Sandbox, 600, 600");
-
 	return new Sandbox();
 }
